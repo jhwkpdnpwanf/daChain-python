@@ -1,0 +1,65 @@
+{
+    "header": {
+        "block_height": 0,
+        "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "nonce": 0,
+        "merkle_root": "7f8b45fa3438a38b53e67f9dc2c06f81cadad5e3ab1ebb1cc128b1de9d400a11"
+    },
+    "txs": [
+        {
+            "txid": "0b166c98d71c28a0ee2f56f0667a7db87e32d48308ee1b9ba85cbb17bbf9acba",
+            "inputs": [],
+            "outputs": [
+                {
+                    "asset_id": 0,
+                    "pubKhash": "b27b84dde858d20fd4fb9197eb4e4bedbc1f7157",
+                    "portion": 100
+                }
+            ]
+        },
+        {
+            "txid": "7be772127ddc365f7078ebd257fd0c6ef915fe00769c727d8c8181063762e04c",
+            "inputs": [],
+            "outputs": [
+                {
+                    "asset_id": 1,
+                    "pubKhash": "487b143ec282c96715a4ce38a29ebd43cc236d5c",
+                    "portion": 100
+                }
+            ]
+        },
+        {
+            "txid": "a03f2a9041a47003b3a937ea1ec3e57274d6121f875a787d2d9961d2c3ee1bdb",
+            "inputs": [],
+            "outputs": [
+                {
+                    "asset_id": 2,
+                    "pubKhash": "00e78da9d260b35df5ce3920c2a9aa23b34fe85b",
+                    "portion": 100
+                }
+            ]
+        },
+        {
+            "txid": "a9d59796affd3c9b943ecdb00cc16a2732f988847434be8c37c1193ac17b4481",
+            "inputs": [],
+            "outputs": [
+                {
+                    "asset_id": 3,
+                    "pubKhash": "5c452178d733fce824bece8cb7e827c0d7d23b1b",
+                    "portion": 100
+                }
+            ]
+        },
+        {
+            "txid": "120729595f93f42dc698b40ee5c5e78cfc8a1783d5b90dd6e849a5221b78aa11",
+            "inputs": [],
+            "outputs": [
+                {
+                    "asset_id": 4,
+                    "pubKhash": "0a3c9919233c67b969033be14cb3aa0f0f6c28f6",
+                    "portion": 100
+                }
+            ]
+        }
+    ]
+}

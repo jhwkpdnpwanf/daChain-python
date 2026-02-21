@@ -1,0 +1,144 @@
+{
+  "assets": {
+    "0": {
+      "stakes": [
+        {
+          "txid": "d94fbfaac25a85702e375c7f3fd6ef3529a4df78a3ecedc706841971f8cef9f6",
+          "output_idx": 0,
+          "owner": "User05",
+          "portion": 6
+        },
+        {
+          "txid": "d94fbfaac25a85702e375c7f3fd6ef3529a4df78a3ecedc706841971f8cef9f6",
+          "output_idx": 1,
+          "owner": "User08",
+          "portion": 33
+        },
+        {
+          "txid": "d94fbfaac25a85702e375c7f3fd6ef3529a4df78a3ecedc706841971f8cef9f6",
+          "output_idx": 2,
+          "owner": "User03",
+          "portion": 51
+        },
+        {
+          "txid": "d94fbfaac25a85702e375c7f3fd6ef3529a4df78a3ecedc706841971f8cef9f6",
+          "output_idx": 3,
+          "owner": "User02",
+          "portion": 10
+        }
+      ]
+    },
+    "1": {
+      "stakes": [
+        {
+          "txid": "d1c0dcffaab755cfd101ae3acea87379b4aedc17d791ea2cdf0947b52e741c16",
+          "output_idx": 1,
+          "owner": "User08",
+          "portion": 6
+        },
+        {
+          "txid": "3ba4bb55f371d0214314881342f9dd608617a2330ed3802dbe6d0c0c18a8e6b4",
+          "output_idx": 0,
+          "owner": "User04",
+          "portion": 36
+        },
+        {
+          "txid": "3ba4bb55f371d0214314881342f9dd608617a2330ed3802dbe6d0c0c18a8e6b4",
+          "output_idx": 2,
+          "owner": "User09",
+          "portion": 29
+        },
+        {
+          "txid": "34acea473fb3f522b463869d05473a30400b2b69994053a2258ef655556181a6",
+          "output_idx": 0,
+          "owner": "User02",
+          "portion": 16
+        },
+        {
+          "txid": "34acea473fb3f522b463869d05473a30400b2b69994053a2258ef655556181a6",
+          "output_idx": 1,
+          "owner": "User04",
+          "portion": 6
+        },
+        {
+          "txid": "34acea473fb3f522b463869d05473a30400b2b69994053a2258ef655556181a6",
+          "output_idx": 2,
+          "owner": "User04",
+          "portion": 7
+        }
+      ]
+    },
+    "2": {
+      "stakes": [
+        {
+          "txid": "998324f233f9dcbafda30a815aaea558f2530d27b1a08d6b91e691424bb95954",
+          "output_idx": 0,
+          "owner": "User07",
+          "portion": 22
+        },
+        {
+          "txid": "00619a91107d4fe5b33b7797c5c0a44423fad74ab294696fc75d0b28d8a9650b",
+          "output_idx": 0,
+          "owner": "User07",
+          "portion": 53
+        },
+        {
+          "txid": "00619a91107d4fe5b33b7797c5c0a44423fad74ab294696fc75d0b28d8a9650b",
+          "output_idx": 1,
+          "owner": "User06",
+          "portion": 10
+        },
+        {
+          "txid": "00619a91107d4fe5b33b7797c5c0a44423fad74ab294696fc75d0b28d8a9650b",
+          "output_idx": 2,
+          "owner": "User06",
+          "portion": 1
+        },
+        {
+          "txid": "00619a91107d4fe5b33b7797c5c0a44423fad74ab294696fc75d0b28d8a9650b",
+          "output_idx": 3,
+          "owner": "User06",
+          "portion": 14
+        }
+      ]
+    },
+    "3": {
+      "stakes": [
+        {
+          "txid": "fb2d1e4686aea76e68b39c41229d616121d2dace28dfc00d0b0963dd5e4c0e52",
+          "output_idx": 0,
+          "owner": "User02",
+          "portion": 31
+        },
+        {
+          "txid": "c55c730815a3de692c82852a22dfe370d092178735f39c81e8227e0310549ecb",
+          "output_idx": 0,
+          "owner": "User06",
+          "portion": 1
+        },
+        {
+          "txid": "c55c730815a3de692c82852a22dfe370d092178735f39c81e8227e0310549ecb",
+          "output_idx": 1,
+          "owner": "User00",
+          "portion": 10
+        },
+        {
+          "txid": "c55c730815a3de692c82852a22dfe370d092178735f39c81e8227e0310549ecb",
+          "output_idx": 2,
+          "owner": "User07",
+          "portion": 58
+        }
+      ]
+    },
+    "4": {
+      "stakes": [
+        {
+          "txid": "814f2c3887773a111a99ff00dd8da304c7ad9fa262afb74b3b987f54b79adbb8",
+          "output_idx": 0,
+          "owner": "User06",
+          "portion": 100
+        }
+      ]
+    }
+  }
+}
