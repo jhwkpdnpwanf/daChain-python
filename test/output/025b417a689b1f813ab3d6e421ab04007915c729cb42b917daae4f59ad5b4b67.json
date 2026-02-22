@@ -1,0 +1,62 @@
+{
+  "txid": "025b417a689b1f813ab3d6e421ab04007915c729cb42b917daae4f59ad5b4b67",
+  "input_count": 4,
+  "inputs": [
+    {
+      "index": 0,
+      "prev_txid": "520f906c952c41aee84039b044327172e5dc5b93e79866a5ea2eab67b0f9252c",
+      "prev_out_index": 0,
+      "pubK": "a650d0575fd26a7e92c2a8f7674c3426ce89c5385f7327693cc367efcf388f07df934f4ba78ae7c0f8d131190d5ffc086d85aad06b99a7ea09de81d248090585",
+      "sig": "d42e76f42d009e492be8c33e7df96ad6d0471f07b98fb729c5510063fc5b228d88a7b94343662d5725f57b01a5cf379d09122a3b6b46986a5ee0acbe67e0c295"
+    },
+    {
+      "index": 1,
+      "prev_txid": "520f906c952c41aee84039b044327172e5dc5b93e79866a5ea2eab67b0f9252c",
+      "prev_out_index": 1,
+      "pubK": "a650d0575fd26a7e92c2a8f7674c3426ce89c5385f7327693cc367efcf388f07df934f4ba78ae7c0f8d131190d5ffc086d85aad06b99a7ea09de81d248090585",
+      "sig": "703cd4838efe6d37399920ebed9c94864611e0b3963e5d9b222d1a09bee5be63c99a9931bf5d0b017110007b4bef3fb1c9ea723d2066b2019d64d239329341fd"
+    },
+    {
+      "index": 2,
+      "prev_txid": "520f906c952c41aee84039b044327172e5dc5b93e79866a5ea2eab67b0f9252c",
+      "prev_out_index": 4,
+      "pubK": "a650d0575fd26a7e92c2a8f7674c3426ce89c5385f7327693cc367efcf388f07df934f4ba78ae7c0f8d131190d5ffc086d85aad06b99a7ea09de81d248090585",
+      "sig": "fbf562d1af7049d8736a513c426dca15441fe1ffc5cd255ab2f9298218b0b560566c438db712aec49de6647e7565891dfecf79181160d340f6988a766f513539"
+    },
+    {
+      "index": 3,
+      "prev_txid": "520f906c952c41aee84039b044327172e5dc5b93e79866a5ea2eab67b0f9252c",
+      "prev_out_index": 3,
+      "pubK": "6aa170c9e98252906c7cb40f01c9ccde67396cc6eb71eee788f3ab8d60260fc0d298ab8686e190d12c2c6cf8db9c7c1bedbab5aa1fd2e92a127d59ee08a1d3f2",
+      "sig": "ac5742459d3f99d1646ffdfd2b62d1d8df8ee9a9496d95453dbcb0a76a3e54819cafe3f31cfb2ea724bf7ea214b6a3dba3b2691788c5328e67f29459e41f6907"
+    }
+  ],
+  "output_count": 4,
+  "outputs": [
+    {
+      "index": 0,
+      "asset_id": 4,
+      "pubKhash": "f4f6973fed0cf3fc55d610f4adb192c0e45effe6",
+      "portion": 6
+    },
+    {
+      "index": 1,
+      "asset_id": 4,
+      "pubKhash": "7afbbbd53348d204899949a409402ecacdd38d27",
+      "portion": 7
+    },
+    {
+      "index": 2,
+      "asset_id": 4,
+      "pubKhash": "7afbbbd53348d204899949a409402ecacdd38d27",
+      "portion": 45
+    },
+    {
+      "index": 3,
+      "asset_id": 4,
+      "pubKhash": "f4f6973fed0cf3fc55d610f4adb192c0e45effe6",
+      "portion": 29
+    }
+  ],
+  "raw_size": 808
+}

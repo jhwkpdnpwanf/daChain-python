@@ -1,0 +1,29 @@
+{
+  "utxos": {
+    "45c3394c42d8b34a54602951f5596fdfecfe3eb20536e48cc9435c0e34162aaf:0": {
+      "asset_id": 0,
+      "pubKhash": "ebce2adf2537a2dcab89de56a350e057a50fd97d",
+      "portion": 100
+    },
+    "b2df93921f3fd525e540d324256f6f946273b257316fe2ee385d427290e2b4d9:0": {
+      "asset_id": 1,
+      "pubKhash": "22990a70973db2273654b80aaae1d869f13e129b",
+      "portion": 100
+    },
+    "47ff723d674c0e153e39aeb9a102f1254541fd920ea6043208974a5ce513f0fa:0": {
+      "asset_id": 2,
+      "pubKhash": "d0d9e3984cfc7b3a1e6b90d76039f05efa7313bc",
+      "portion": 100
+    },
+    "952c1bbe70fbf9988b838a66a31ae3d1894b848133d6817b1ad30c6962986b56:0": {
+      "asset_id": 3,
+      "pubKhash": "b959d176c431a9af44ee0003ca59cca970be6969",
+      "portion": 100
+    },
+    "90deb1f068a7a28b942cfcd6cb051c95a3da1528c1612fa331f37710f70cbb16:0": {
+      "asset_id": 4,
+      "pubKhash": "0e424d890eb724bb1257a912923ab1146c0ffacb",
+      "portion": 100
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "txid": "520f906c952c41aee84039b044327172e5dc5b93e79866a5ea2eab67b0f9252c",
+  "input_count": 1,
+  "inputs": [
+    {
+      "index": 0,
+      "prev_txid": "1f7ea9c5f7f7e04f8e9cc9b145fba1416b092839562f3aad15e95ce2d84c298e",
+      "prev_out_index": 0,
+      "pubK": "a650d0575fd26a7e92c2a8f7674c3426ce89c5385f7327693cc367efcf388f07df934f4ba78ae7c0f8d131190d5ffc086d85aad06b99a7ea09de81d248090585",
+      "sig": "7e8f21b712631548b907d39e76972c1722527cf728eb4c91c602a51b8a6fcaa929fc4f365f918180eda6bcbfb1f6965acd4f405001b76a8e18f19d032f3b867b"
+    }
+  ],
+  "output_count": 5,
+  "outputs": [
+    {
+      "index": 0,
+      "asset_id": 4,
+      "pubKhash": "a526918ea5ec7571965aae95a7980bab34c8340a",
+      "portion": 2
+    },
+    {
+      "index": 1,
+      "asset_id": 4,
+      "pubKhash": "a526918ea5ec7571965aae95a7980bab34c8340a",
+      "portion": 17
+    },
+    {
+      "index": 2,
+      "asset_id": 4,
+      "pubKhash": "c2b258af8064611b9c5eb0a7fa1bfbadb0202e08",
+      "portion": 13
+    },
+    {
+      "index": 3,
+      "asset_id": 4,
+      "pubKhash": "a5911f53fd2bd0151b7d084fe1b676c02195cae8",
+      "portion": 65
+    },
+    {
+      "index": 4,
+      "asset_id": 4,
+      "pubKhash": "a526918ea5ec7571965aae95a7980bab34c8340a",
+      "portion": 3
+    }
+  ],
+  "raw_size": 344
+}

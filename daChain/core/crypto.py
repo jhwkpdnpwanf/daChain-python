@@ -58,6 +58,7 @@ def sign(privkey32: PrivKey32, message: bytes) -> Sig64:
     r, s = utils.decode_dss_signature(der_sig)
     return r.to_bytes(32, "big") + s.to_bytes(32, "big")
 
+
 def verify(pubkey64: PubKey64, message: bytes, sig64: Sig64) -> bool:
     x = int.from_bytes(pubkey64[:32], "big")
     y = int.from_bytes(pubkey64[32:], "big")

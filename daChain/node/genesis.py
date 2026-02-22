@@ -365,9 +365,10 @@ def initiate_full_nodes(node_count: int) -> None:
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     _write_json(DATA_DIR / "node.json", nodes_dict)
-
-    _launch_fullnodes(nodes_dict)
+    
     _init_utxo_for_nodes(nodes_dict)
+    _launch_fullnodes(nodes_dict)
+
 
     print(f"[initiate fullNodes] full nodes={node_count}, connected p2p graph ready")
 

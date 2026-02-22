@@ -174,7 +174,8 @@ def _corrupt_transaction(tx: Tx) -> Tx:
     
     elif error_type == "asset_id":
         idx = random.randint(0, len(outputs) - 1)
-        outputs[idx] = TxOut(asset_id=-1, pubKhash=outputs[idx].pubKhash, portion=outputs[idx].portion)
+        bad_asset_id = 0xFFFFFFFF
+        outputs[idx] = TxOut(asset_id=bad_asset_id, pubKhash=outputs[idx].pubKhash, portion=outputs[idx].portion)
         return Tx(txid=tx.txid, inputs=tx.inputs, outputs=tuple(outputs))
     
     else: # portion
@@ -259,19 +260,8 @@ def _send_tx_bytes(ip: str, port: int, payload: bytes, timeout: float = 3.0) -> 
         return True, ack_payload
 
 
-def _tx_to_wire_bytes(tx: Tx) -> bytes:
-    """
-    노드에게 보낼 '진짜 바이트 Tx' 입니다.
-
-    1순위: serialize.tx_to_bytes(tx) 사용
-    2순위(대체안): tx_body_to_bytes(tx.inputs, tx.outputs)만 보내기 (txid는 노드가 재계산)
-    """
-    return tx_to_bytes(tx)
-
-
-
 # 사용자 프로세스 메인 루프
-def run_user_process(error_rate: float = 0.2, interval: float = 2.0) -> None:
+def run_user_process(error_rate: float = 1, interval: float = 2.0) -> None:
     node_addrs = _get_node_addrs()
 
     while True:
@@ -284,7 +274,7 @@ def run_user_process(error_rate: float = 0.2, interval: float = 2.0) -> None:
                 is_corrupted = True
                 print("[user] corrupted tx generated", flush=True)
 
-            tx_bytes = _tx_to_wire_bytes(tx)
+            tx_bytes = tx_to_bytes(tx)
 
             ip, port = random.choice(node_addrs)
             print(f"[user] send TX_NEW bytes -> {ip}:{port} (valid={not is_corrupted})", flush=True)

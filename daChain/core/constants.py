@@ -1,8 +1,11 @@
 ZERO32 = b"\x00" * 32
-
+TXID_SIZE = 32
 
 TXIN_SIZE = 32 + 4 + 64 + 64
-TXID_SIZE = 32
+TXIN_PREV_TXID_SIZE = 32
+TXIN_PREV_OUT_INDEX_SIZE = 4
+TXIN_PUBK_SIZE = 64
+TXIN_SIG_SIZE = 64
 """
 input 구조 (164 bytes)
 --------------------------------
@@ -13,7 +16,10 @@ sig             : 64 bytes
 --------------------------------
 """
 
-TXOUT_SIZE = 4 + 20 + 4
+TXOUT_SIZE = 28
+TXOUT_ASSET_ID_SIZE = 4
+TXOUT_PUBKHASH_SIZE = 20
+TXOUT_PORTION_SIZE = 4
 """
 output 구조 (28 bytes)
 ----------------------------
@@ -23,26 +29,9 @@ portion   : 4 bytes (uint32)
 ----------------------------
 """
 
-
-
-
-
-
-U32_SIZE = 4
-
-HASH32_SIZE = 32
-PUBK64_SIZE = 64
-SIG64_SIZE = 64
-PUBKHASH20_SIZE = 20
-
-HEADER_SIZE = 72
-
-TXID_SIZE = 32
-TXIN_SIZE = 32 + 4 + 64 + 64   # 164
-TXOUT_SIZE = 4 + 20 + 4        # 28
-
-
-
+INPUT_INDEX_SIZE = 4
+INPUT_PUBK_SIZE = 64
+INPUT_SIG_SIZE = 64
 """
 input 구조
 --------------------------------
@@ -53,6 +42,9 @@ sig             : 64 bytes
 --------------------------------
 """
 
+OUTPUT_ASSET_ID_SIZE = 4
+OUTPUT_PUBKHASH_SIZE = 20
+OUTPUT_PORTION_SIZE = 4
 """
 output 구조
 ----------------------------
@@ -62,6 +54,10 @@ portion   : 4 bytes (uint32)
 ----------------------------
 """
 
+
+
+TX_INPUT_COUNT_SIZE = 4
+TX_OUTPUT_COUNT_SIZE = 4
 """
 transaction 구조 (txid : 32 bytes)
 ------------------------------
@@ -71,6 +67,8 @@ output_count    : 4 bytes
 output          : 28 bytes * output_count
 ------------------------------
 """
+
+
 
 """
 Block Header 구조 (총 72 bytes)

@@ -3,60 +3,60 @@
         "block_height": 0,
         "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
         "nonce": 0,
-        "merkle_root": "7f8b45fa3438a38b53e67f9dc2c06f81cadad5e3ab1ebb1cc128b1de9d400a11"
+        "merkle_root": "1a29586119a2de2bc629b2e155e02412afc622c309055260945a855f5a4cf6e4"
     },
     "txs": [
         {
-            "txid": "0b166c98d71c28a0ee2f56f0667a7db87e32d48308ee1b9ba85cbb17bbf9acba",
+            "txid": "45c3394c42d8b34a54602951f5596fdfecfe3eb20536e48cc9435c0e34162aaf",
             "inputs": [],
             "outputs": [
                 {
                     "asset_id": 0,
-                    "pubKhash": "b27b84dde858d20fd4fb9197eb4e4bedbc1f7157",
+                    "pubKhash": "ebce2adf2537a2dcab89de56a350e057a50fd97d",
                     "portion": 100
                 }
             ]
         },
         {
-            "txid": "7be772127ddc365f7078ebd257fd0c6ef915fe00769c727d8c8181063762e04c",
+            "txid": "b2df93921f3fd525e540d324256f6f946273b257316fe2ee385d427290e2b4d9",
             "inputs": [],
             "outputs": [
                 {
                     "asset_id": 1,
-                    "pubKhash": "487b143ec282c96715a4ce38a29ebd43cc236d5c",
+                    "pubKhash": "22990a70973db2273654b80aaae1d869f13e129b",
                     "portion": 100
                 }
             ]
         },
         {
-            "txid": "a03f2a9041a47003b3a937ea1ec3e57274d6121f875a787d2d9961d2c3ee1bdb",
+            "txid": "47ff723d674c0e153e39aeb9a102f1254541fd920ea6043208974a5ce513f0fa",
             "inputs": [],
             "outputs": [
                 {
                     "asset_id": 2,
-                    "pubKhash": "00e78da9d260b35df5ce3920c2a9aa23b34fe85b",
+                    "pubKhash": "d0d9e3984cfc7b3a1e6b90d76039f05efa7313bc",
                     "portion": 100
                 }
             ]
         },
         {
-            "txid": "a9d59796affd3c9b943ecdb00cc16a2732f988847434be8c37c1193ac17b4481",
+            "txid": "952c1bbe70fbf9988b838a66a31ae3d1894b848133d6817b1ad30c6962986b56",
             "inputs": [],
             "outputs": [
                 {
                     "asset_id": 3,
-                    "pubKhash": "5c452178d733fce824bece8cb7e827c0d7d23b1b",
+                    "pubKhash": "b959d176c431a9af44ee0003ca59cca970be6969",
                     "portion": 100
                 }
             ]
         },
         {
-            "txid": "120729595f93f42dc698b40ee5c5e78cfc8a1783d5b90dd6e849a5221b78aa11",
+            "txid": "90deb1f068a7a28b942cfcd6cb051c95a3da1528c1612fa331f37710f70cbb16",
             "inputs": [],
             "outputs": [
                 {
                     "asset_id": 4,
-                    "pubKhash": "0a3c9919233c67b969033be14cb3aa0f0f6c28f6",
+                    "pubKhash": "0e424d890eb724bb1257a912923ab1146c0ffacb",
                     "portion": 100
                 }
             ]

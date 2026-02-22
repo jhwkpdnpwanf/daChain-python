@@ -3,140 +3,152 @@
     "0": {
       "stakes": [
         {
-          "txid": "d94fbfaac25a85702e375c7f3fd6ef3529a4df78a3ecedc706841971f8cef9f6",
+          "txid": "7b9114747420d1941649f8dbd3f411962e190bf39ee68a83e7a91fcd82c8c6de",
+          "output_idx": 0,
+          "owner": "User00",
+          "portion": 72
+        },
+        {
+          "txid": "7b9114747420d1941649f8dbd3f411962e190bf39ee68a83e7a91fcd82c8c6de",
+          "output_idx": 1,
+          "owner": "User05",
+          "portion": 24
+        },
+        {
+          "txid": "b1ce4761d8b6286d89919429818c33a81584cef5b748c8f1290808dcdfd6fa89",
           "output_idx": 0,
           "owner": "User05",
-          "portion": 6
+          "portion": 2
         },
         {
-          "txid": "d94fbfaac25a85702e375c7f3fd6ef3529a4df78a3ecedc706841971f8cef9f6",
+          "txid": "b1ce4761d8b6286d89919429818c33a81584cef5b748c8f1290808dcdfd6fa89",
           "output_idx": 1,
-          "owner": "User08",
-          "portion": 33
-        },
-        {
-          "txid": "d94fbfaac25a85702e375c7f3fd6ef3529a4df78a3ecedc706841971f8cef9f6",
-          "output_idx": 2,
-          "owner": "User03",
-          "portion": 51
-        },
-        {
-          "txid": "d94fbfaac25a85702e375c7f3fd6ef3529a4df78a3ecedc706841971f8cef9f6",
-          "output_idx": 3,
           "owner": "User02",
-          "portion": 10
+          "portion": 1
+        },
+        {
+          "txid": "b1ce4761d8b6286d89919429818c33a81584cef5b748c8f1290808dcdfd6fa89",
+          "output_idx": 2,
+          "owner": "User01",
+          "portion": 1
         }
       ]
     },
     "1": {
       "stakes": [
         {
-          "txid": "d1c0dcffaab755cfd101ae3acea87379b4aedc17d791ea2cdf0947b52e741c16",
-          "output_idx": 1,
-          "owner": "User08",
-          "portion": 6
-        },
-        {
-          "txid": "3ba4bb55f371d0214314881342f9dd608617a2330ed3802dbe6d0c0c18a8e6b4",
+          "txid": "db4edf018649f17fbf2b73c058935ea48d17016085fbd69a0a6a24e611b2906c",
           "output_idx": 0,
-          "owner": "User04",
-          "portion": 36
+          "owner": "User06",
+          "portion": 3
         },
         {
-          "txid": "3ba4bb55f371d0214314881342f9dd608617a2330ed3802dbe6d0c0c18a8e6b4",
+          "txid": "db4edf018649f17fbf2b73c058935ea48d17016085fbd69a0a6a24e611b2906c",
+          "output_idx": 1,
+          "owner": "User00",
+          "portion": 33
+        },
+        {
+          "txid": "db4edf018649f17fbf2b73c058935ea48d17016085fbd69a0a6a24e611b2906c",
           "output_idx": 2,
+          "owner": "User05",
+          "portion": 10
+        },
+        {
+          "txid": "db4edf018649f17fbf2b73c058935ea48d17016085fbd69a0a6a24e611b2906c",
+          "output_idx": 3,
           "owner": "User09",
-          "portion": 29
-        },
-        {
-          "txid": "34acea473fb3f522b463869d05473a30400b2b69994053a2258ef655556181a6",
-          "output_idx": 0,
-          "owner": "User02",
-          "portion": 16
-        },
-        {
-          "txid": "34acea473fb3f522b463869d05473a30400b2b69994053a2258ef655556181a6",
-          "output_idx": 1,
-          "owner": "User04",
-          "portion": 6
-        },
-        {
-          "txid": "34acea473fb3f522b463869d05473a30400b2b69994053a2258ef655556181a6",
-          "output_idx": 2,
-          "owner": "User04",
-          "portion": 7
+          "portion": 54
         }
       ]
     },
     "2": {
       "stakes": [
         {
-          "txid": "998324f233f9dcbafda30a815aaea558f2530d27b1a08d6b91e691424bb95954",
-          "output_idx": 0,
-          "owner": "User07",
-          "portion": 22
-        },
-        {
-          "txid": "00619a91107d4fe5b33b7797c5c0a44423fad74ab294696fc75d0b28d8a9650b",
-          "output_idx": 0,
-          "owner": "User07",
-          "portion": 53
-        },
-        {
-          "txid": "00619a91107d4fe5b33b7797c5c0a44423fad74ab294696fc75d0b28d8a9650b",
+          "txid": "5e46e2d13ccd3fc6a118c3d35c56582928b4b5d94bf108570aa78b0233ae53bd",
           "output_idx": 1,
-          "owner": "User06",
-          "portion": 10
+          "owner": "User01",
+          "portion": 19
         },
         {
-          "txid": "00619a91107d4fe5b33b7797c5c0a44423fad74ab294696fc75d0b28d8a9650b",
-          "output_idx": 2,
-          "owner": "User06",
-          "portion": 1
+          "txid": "d213e3c0223e6169bff0bb38703c957c7d9d57ed6db9bfd4ee50ee891fadff8b",
+          "output_idx": 0,
+          "owner": "User08",
+          "portion": 73
         },
         {
-          "txid": "00619a91107d4fe5b33b7797c5c0a44423fad74ab294696fc75d0b28d8a9650b",
-          "output_idx": 3,
-          "owner": "User06",
-          "portion": 14
+          "txid": "d213e3c0223e6169bff0bb38703c957c7d9d57ed6db9bfd4ee50ee891fadff8b",
+          "output_idx": 1,
+          "owner": "User08",
+          "portion": 8
         }
       ]
     },
     "3": {
       "stakes": [
         {
-          "txid": "fb2d1e4686aea76e68b39c41229d616121d2dace28dfc00d0b0963dd5e4c0e52",
-          "output_idx": 0,
-          "owner": "User02",
-          "portion": 31
-        },
-        {
-          "txid": "c55c730815a3de692c82852a22dfe370d092178735f39c81e8227e0310549ecb",
-          "output_idx": 0,
-          "owner": "User06",
-          "portion": 1
-        },
-        {
-          "txid": "c55c730815a3de692c82852a22dfe370d092178735f39c81e8227e0310549ecb",
-          "output_idx": 1,
-          "owner": "User00",
-          "portion": 10
-        },
-        {
-          "txid": "c55c730815a3de692c82852a22dfe370d092178735f39c81e8227e0310549ecb",
+          "txid": "8532975d2a97560e96d84952e5f186c68f200687142db554cbb561c9cf23a210",
           "output_idx": 2,
           "owner": "User07",
-          "portion": 58
+          "portion": 22
+        },
+        {
+          "txid": "8532975d2a97560e96d84952e5f186c68f200687142db554cbb561c9cf23a210",
+          "output_idx": 4,
+          "owner": "User02",
+          "portion": 13
+        },
+        {
+          "txid": "33125329a6696d50f9b5c270e165d8f46993a6d7bd594c8c1469f110224440e4",
+          "output_idx": 0,
+          "owner": "User06",
+          "portion": 13
+        },
+        {
+          "txid": "33125329a6696d50f9b5c270e165d8f46993a6d7bd594c8c1469f110224440e4",
+          "output_idx": 1,
+          "owner": "User02",
+          "portion": 20
+        },
+        {
+          "txid": "33125329a6696d50f9b5c270e165d8f46993a6d7bd594c8c1469f110224440e4",
+          "output_idx": 2,
+          "owner": "User06",
+          "portion": 17
+        },
+        {
+          "txid": "33125329a6696d50f9b5c270e165d8f46993a6d7bd594c8c1469f110224440e4",
+          "output_idx": 3,
+          "owner": "User01",
+          "portion": 15
         }
       ]
     },
     "4": {
       "stakes": [
         {
-          "txid": "814f2c3887773a111a99ff00dd8da304c7ad9fa262afb74b3b987f54b79adbb8",
+          "txid": "aa9e69327f322bd0b96f0b54e856b2f5f474fe2d250743a9b8e2074333279c95",
+          "output_idx": 1,
+          "owner": "User02",
+          "portion": 16
+        },
+        {
+          "txid": "aa9e69327f322bd0b96f0b54e856b2f5f474fe2d250743a9b8e2074333279c95",
+          "output_idx": 4,
+          "owner": "User00",
+          "portion": 1
+        },
+        {
+          "txid": "2ef06864062eda360ac32432dcbcd2976d6f9fefa0579acc07165d69b2dbb36d",
           "output_idx": 0,
-          "owner": "User06",
-          "portion": 100
+          "owner": "User04",
+          "portion": 77
+        },
+        {
+          "txid": "2ef06864062eda360ac32432dcbcd2976d6f9fefa0579acc07165d69b2dbb36d",
+          "output_idx": 1,
+          "owner": "User08",
+          "portion": 6
         }
       ]
     }
