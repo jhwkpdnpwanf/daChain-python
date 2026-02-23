@@ -236,7 +236,7 @@ def update_state_after_tx(tx: Tx, consumed_stakes: list[dict], asset_id: int) ->
 
     stakes_data["assets"][str(asset_id)]["stakes"] = updated_stakes
     _save_json(STAKES_PATH, stakes_data)
-    print(f"[user] stakes.json updated (asset_id={asset_id})", flush=True)
+    # print(f"[user] stakes.json updated (asset_id={asset_id})", flush=True)
 
     
 
@@ -274,7 +274,7 @@ def _send_tx_bytes(ip: str, port: int, payload: bytes, timeout: float = 3.0) -> 
 
 
 # 사용자 프로세스 메인 루프
-def run_user_process(error_rate: float = 0.2, interval: float = 2.0) -> None:
+def run_user_process(error_rate: float = 0.2, interval: float = 5.0) -> None:
     node_addrs = _get_node_addrs()
 
     while True:
@@ -297,7 +297,7 @@ def run_user_process(error_rate: float = 0.2, interval: float = 2.0) -> None:
 
                 if ok:
                     # runner의 ACK payload가 b"OK" 같은 형태라고 가정
-                    print(f"[user] ACK: {ack_payload!r}", flush=True)
+                    # print(f"[user] ACK: {ack_payload!r}", flush=True)
 
                     # 변조 아니면 로컬 장부 업데이트
                     if not is_corrupted:

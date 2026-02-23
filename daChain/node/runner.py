@@ -4,6 +4,7 @@ import argparse
 import asyncio
 import struct
 import json
+import os
 import random
 import struct
 from pathlib import Path
@@ -25,8 +26,10 @@ from  daChain.core.constants import (
     MINE_INTERVAL_SEC, MAX_TXS_PER_BLOCK, ZERO32,
 )
 
-POW_TARGET_PREFIX_HEX = "000000"
+POW_TARGET_PREFIX_HEX = os.getenv("POW_TARGET_PREFIX_HEX", "000000")
 MAX_NONCE = 2 ** 32
+POW_MINING_NONCE_CHUNK = int(os.getenv("POW_MINING_NONCE_CHUNK", "50000"))
+POW_TX_ORDER_VARIANTS = max(1, int(os.getenv("POW_TX_ORDER_VARIANTS", "8")))
 
 
 class NodeRuntime:
@@ -115,22 +118,72 @@ class NodeRuntime:
     def _pow_ok(self, block_hash: bytes) -> bool:
         return block_hash.hex().startswith(POW_TARGET_PREFIX_HEX)
     
-    def _mine_pow(self, header: BlockHeader) -> tuple[BlockHeader | None, bytes | None]:
-        block_hash = self._hash_header(header)
-        if self._pow_ok(block_hash):
-            return header, block_hash
 
-        for nonce in range(1, MAX_NONCE):
-            h = BlockHeader(
-                block_height=header.block_height,
-                prev_hash=header.prev_hash,
-                nonce=nonce,
-                merkle_root=header.merkle_root,
-            )
-            block_hash = self._hash_header(h)
-            if self._pow_ok(block_hash):
-                return h, block_hash
+    async def _mine_pow(self, header: BlockHeader) -> tuple[BlockHeader | None, bytes | None]:
+        nonce = 0
+        while nonce < MAX_NONCE:
+            end = min(nonce + POW_MINING_NONCE_CHUNK, MAX_NONCE)
+            for current_nonce in range(nonce, end):
+                h = BlockHeader(
+                    block_height=header.block_height,
+                    prev_hash=header.prev_hash,
+                    nonce=current_nonce,
+                    merkle_root=header.merkle_root,
+                )
+                block_hash = self._hash_header(h)
+                if self._pow_ok(block_hash):
+                    return h, block_hash
+
+            nonce = end
+            await asyncio.sleep(0)
+
         return None, None
+
+    def _build_candidate_variants(
+        self,
+        tx_files: list[Path],
+        base_height: int,
+        base_tip: bytes,
+    ) -> list[tuple[list[Tx], dict, BlockHeader]]:
+        variants: list[tuple[list[Tx], dict, BlockHeader]] = []
+        seed = base_height ^ int.from_bytes(base_tip[-8:], "big")
+
+        for variant_idx in range(POW_TX_ORDER_VARIANTS):
+            ordered_files = list(tx_files)
+            if variant_idx > 0:
+                rng = random.Random(seed + variant_idx)
+                rng.shuffle(ordered_files)
+
+            snapshot = dict(self.utxos)
+            txs: list[Tx] = []
+            consumed: set[str] = set()
+
+            for tx_file in ordered_files:
+                tx_bytes = tx_file.read_bytes()
+                tx = tx_bytes_to_Tx(tx_bytes)
+                txid_hex = tx.txid.hex()
+                if txid_hex in consumed:
+                    continue
+
+                if validate_transaction(tx_bytes, snapshot):
+                    txs.append(tx)
+                    consumed.add(txid_hex)
+                    self._apply_tx_to_utxo(snapshot, tx)
+
+            if not txs:
+                continue
+
+            root = merkle_root(txs)
+            candidate_header = BlockHeader(
+                block_height=base_height + 1,
+                prev_hash=base_tip,
+                nonce=0,
+                merkle_root=root,
+            )
+            variants.append((txs, snapshot, candidate_header))
+
+        return variants
+    
     
     def _rebuild_utxos_from_chain(self, chain: list[tuple[bytes, Block]]) -> dict:
         utxos = {}
@@ -168,38 +221,28 @@ class NodeRuntime:
             base_tip = self.chain_tip_hash
             base_height = self.chain[-1][1].header.block_height
 
-            snapshot = dict(self.utxos)
-            txs: list[Tx] = []
-            consumed: set[str] = set()
+            variants = self._build_candidate_variants(tx_files, base_height, base_tip)
 
-            for tx_file in tx_files:
-                tx_bytes = tx_file.read_bytes()
-                tx = tx_bytes_to_Tx(tx_bytes)
-                txid_hex = tx.txid.hex()
-                if txid_hex in consumed:
-                    continue
-
-                if validate_transaction(tx_bytes, snapshot):
-                    txs.append(tx)
-                    consumed.add(txid_hex)
-                    self._apply_tx_to_utxo(snapshot, tx)
-
-            if not txs:
-                return
-
-            root = merkle_root(txs)
-            candidate_header = BlockHeader(
-                block_height=base_height + 1,
-                prev_hash=base_tip,
-                nonce=0,
-                merkle_root=root,
-            )
-
-        mined_header, block_hash = self._mine_pow(candidate_header)
-        if mined_header is None or block_hash is None:
+        if not variants:
             return
 
-        block = Block(header=mined_header, txs=tuple(txs))
+        selected_txs: list[Tx] | None = None
+        selected_snapshot: dict | None = None
+        mined_header: BlockHeader | None = None
+        block_hash: bytes | None = None
+
+        for txs, snapshot, candidate_header in variants:
+            mined_header, block_hash = await self._mine_pow(candidate_header)
+            if mined_header is not None and block_hash is not None:
+                selected_txs = txs
+                selected_snapshot = snapshot
+                break
+
+
+        if mined_header is None or block_hash is None or selected_txs is None or selected_snapshot is None:
+            return
+
+        block = Block(header=mined_header, txs=tuple(selected_txs))
 
         async with self.chain_lock:
             if self.chain_tip_hash != base_tip or self.chain[-1][1].header.block_height != base_height:
@@ -207,17 +250,17 @@ class NodeRuntime:
 
             self.chain.append((block_hash, block))
             self.chain_tip_hash = block_hash
-            self.utxos = snapshot
+            self.utxos = selected_snapshot
 
             self._write_chain_files(self.chain)
             self._persist_utxos(self.utxos)
 
-            for tx in txs:
+            for tx in selected_txs:
                 path = self.mempool_dir / f"{tx.txid.hex()}.dat"
                 if path.exists():
                     path.unlink()
 
-        print(f"[{self.name}] mined block h={mined_header.block_height} txs={len(txs)}", flush=True)
+        print(f"[{self.name}] mined block h={mined_header.block_height} txs={len(selected_txs)}", flush=True)
         asyncio.create_task(self.broadcast_block(block_to_bytes(block)))
 
 
