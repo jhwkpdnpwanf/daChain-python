@@ -8,6 +8,7 @@ from pathlib import Path
 from daChain.core.da_types import TxIn, TxOut, Tx
 from daChain.core.crypto import sha256, sign
 from daChain.core.serialize import tx_body_to_bytes, txin_body_without_sig, tx_to_bytes
+from  daChain.core.constants import MSG_TX_NEW, MSG_TX_ACK
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = PROJECT_ROOT / "daChain" / "data"
@@ -15,8 +16,7 @@ STAKES_PATH = DATA_DIR / "stakes.json"
 USERS_PATH = DATA_DIR / "user.json"
 NODE_PATH = DATA_DIR / "node.json"
 
-MSG_TX_NEW = 0x01
-MSG_TX_ACK = 0x02
+
 
 """
 JSON 관련 함수

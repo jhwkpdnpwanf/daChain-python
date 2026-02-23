@@ -3,122 +3,50 @@
     "0": {
       "stakes": [
         {
-          "owner": "User00",
-          "portion": 100,
-          "txid": "9c6c536a0c81bf5fd16adc897be998f47126230d7e539c218040867b84ec12ef",
-          "output_idx": 0
+          "txid": "f35b66559d99a12e78dccabaf815f2d95c8ad869000f63587f841726370e1f2e",
+          "output_idx": 0,
+          "owner": "User02",
+          "portion": 100
         }
       ]
     },
     "1": {
       "stakes": [
         {
-          "txid": "b30d5c49bb2a1ecfb3627d9c99aa4c581d810acba3d037b9f73fc9b696e99683",
-          "output_idx": 0,
-          "owner": "User02",
-          "portion": 7
-        },
-        {
-          "txid": "b30d5c49bb2a1ecfb3627d9c99aa4c581d810acba3d037b9f73fc9b696e99683",
-          "output_idx": 1,
           "owner": "User01",
-          "portion": 50
-        },
-        {
-          "txid": "b30d5c49bb2a1ecfb3627d9c99aa4c581d810acba3d037b9f73fc9b696e99683",
-          "output_idx": 2,
-          "owner": "User04",
-          "portion": 20
-        },
-        {
-          "txid": "b30d5c49bb2a1ecfb3627d9c99aa4c581d810acba3d037b9f73fc9b696e99683",
-          "output_idx": 3,
-          "owner": "User00",
-          "portion": 16
-        },
-        {
-          "txid": "b30d5c49bb2a1ecfb3627d9c99aa4c581d810acba3d037b9f73fc9b696e99683",
-          "output_idx": 4,
-          "owner": "User08",
-          "portion": 7
+          "portion": 100,
+          "txid": "f98835557923aac5431cb375b12a74fe772af31c634784f51683e0bc9c832b9d",
+          "output_idx": 0
         }
       ]
     },
     "2": {
       "stakes": [
         {
-          "txid": "857c4e0e298a27c4e65d45c1ffe228185e9903838f51751c610a58e06fd93539",
-          "output_idx": 0,
-          "owner": "User05",
-          "portion": 10
-        },
-        {
-          "txid": "857c4e0e298a27c4e65d45c1ffe228185e9903838f51751c610a58e06fd93539",
-          "output_idx": 1,
-          "owner": "User00",
-          "portion": 90
+          "owner": "User02",
+          "portion": 100,
+          "txid": "14e75353f9b1b4d5008105af70c473bea8489aed3b56979bf3fc1e8b70c2a6bd",
+          "output_idx": 0
         }
       ]
     },
     "3": {
       "stakes": [
         {
-          "txid": "6973ff599ba7e9afa8e656a8d8bad459062462e4fe593b4fbc2d175205288a7d",
-          "output_idx": 1,
           "owner": "User03",
-          "portion": 51
-        },
-        {
-          "txid": "7c5368245485152b7657aef92fe6753633b50aee91e8c7003e9af56d5ffc3a32",
-          "output_idx": 0,
-          "owner": "User04",
-          "portion": 8
-        },
-        {
-          "txid": "7c5368245485152b7657aef92fe6753633b50aee91e8c7003e9af56d5ffc3a32",
-          "output_idx": 1,
-          "owner": "User00",
-          "portion": 4
-        },
-        {
-          "txid": "7c5368245485152b7657aef92fe6753633b50aee91e8c7003e9af56d5ffc3a32",
-          "output_idx": 2,
-          "owner": "User05",
-          "portion": 18
-        },
-        {
-          "txid": "7c5368245485152b7657aef92fe6753633b50aee91e8c7003e9af56d5ffc3a32",
-          "output_idx": 3,
-          "owner": "User08",
-          "portion": 18
-        },
-        {
-          "txid": "7c5368245485152b7657aef92fe6753633b50aee91e8c7003e9af56d5ffc3a32",
-          "output_idx": 4,
-          "owner": "User04",
-          "portion": 1
+          "portion": 100,
+          "txid": "6614b22a7a4129977ccc25fc4598298fd76ba96c64f2f991ae04cff51e4238b6",
+          "output_idx": 0
         }
       ]
     },
     "4": {
       "stakes": [
         {
-          "txid": "5234f984ea975ffa067ffbb6c5d58275d8aba6f4ca88fdb69b7089f11d37463b",
-          "output_idx": 0,
-          "owner": "User06",
-          "portion": 81
-        },
-        {
-          "txid": "f901fc5ff06be83278d2956a43a932408b2ed2d2f4317e4795bf7a70fbcbf4b2",
-          "output_idx": 0,
-          "owner": "User03",
-          "portion": 9
-        },
-        {
-          "txid": "f901fc5ff06be83278d2956a43a932408b2ed2d2f4317e4795bf7a70fbcbf4b2",
-          "output_idx": 1,
           "owner": "User04",
-          "portion": 10
+          "portion": 100,
+          "txid": "7597fd736173efea815dc8198436217db8520b83deae0f5d52502ca5032dea1c",
+          "output_idx": 0
         }
       ]
     }

@@ -140,3 +140,48 @@ def txin_body_without_sig(tx_in: TxIn) -> bytes:
     out += b'\x00' * 64
     
     return bytes(out)
+
+
+def block_bytes_to_Block(block_bytes: bytes) -> Block:
+    offset = 0
+
+    block_height = int.from_bytes(block_bytes[offset:offset + 4], "big")
+    offset += 4
+    prev_hash = block_bytes[offset:offset + 32]
+    offset += 32
+    nonce = int.from_bytes(block_bytes[offset:offset + 4], "big")
+    offset += 4
+    merkle_root = block_bytes[offset:offset + 32]
+    offset += 32
+
+    tx_count = int.from_bytes(block_bytes[offset:offset + 4], "big")
+    offset += 4
+
+    txs = []
+    for _ in range(tx_count):
+        tx_start = offset
+
+        txid = block_bytes[offset:offset + TXID_SIZE]
+        offset += TXID_SIZE
+
+        input_count = int.from_bytes(block_bytes[offset:offset + TX_INPUT_COUNT_SIZE], "big")
+        offset += TX_INPUT_COUNT_SIZE
+        offset += input_count * TXIN_SIZE
+
+        output_count = int.from_bytes(block_bytes[offset:offset + TX_OUTPUT_COUNT_SIZE], "big")
+        offset += TX_OUTPUT_COUNT_SIZE
+        offset += output_count * TXOUT_SIZE
+
+        tx_bytes = block_bytes[tx_start:offset]
+        tx = tx_bytes_to_Tx(tx_bytes)
+        if tx.txid != txid:
+            tx = Tx(txid=txid, inputs=tx.inputs, outputs=tx.outputs)
+        txs.append(tx)
+
+    header = BlockHeader(
+        block_height=block_height,
+        prev_hash=prev_hash,
+        nonce=nonce,
+        merkle_root=merkle_root,
+    )
+    return Block(header=header, txs=tuple(txs))
