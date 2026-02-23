@@ -1,10 +1,10 @@
 {
-    "txid": "47ff723d674c0e153e39aeb9a102f1254541fd920ea6043208974a5ce513f0fa",
+    "txid": "d93dfa141eb9622b97cf3fe093a746012edf1bfd02b42880d9e10fa9e2e84eb6",
     "inputs": [],
     "outputs": [
         {
             "asset_id": 2,
-            "pubKhash": "d0d9e3984cfc7b3a1e6b90d76039f05efa7313bc",
+            "pubKhash": "6703e489f18eee51e2f31dff15624b92c35a55fa",
             "portion": 100
         }
     ]

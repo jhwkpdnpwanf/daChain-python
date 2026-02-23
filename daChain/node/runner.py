@@ -2,15 +2,12 @@ from __future__ import annotations
 
 import argparse
 import asyncio
-from os import path
 import struct
-import time
 import json
 from pathlib import Path
 
-from daChain.core.da_types import Tx
 from daChain.core.serialize import tx_bytes_to_Tx
-from daChain.core.validate import verify_signatures
+from daChain.core.validate import validate_transaction
 
 
 
@@ -75,7 +72,7 @@ class NodeRuntime:
                     "asset_id": asset_id
                 }
         
-        print(f"[{self.name}] Loaded {len(flat_utxos)} UTXOs into memory.")
+        # print(f"[{self.name}] Loaded {len(flat_utxos)} UTXOs into memory.")
         return flat_utxos
 
     async def start_server(self) -> None:
@@ -150,7 +147,7 @@ class NodeRuntime:
             await self._send_ack(writer, b"DUPLICATE")
             return
         else:
-            if not verify_signatures(tx_bytes, self.utxos):
+            if not validate_transaction(tx_bytes, self.utxos):
                 print(f"[{self.name}] Invalid transaction rejected: {txid_hex[:8]}", flush=True)
                 await self._send_ack(writer, b"INVALID")
                 return

@@ -164,32 +164,28 @@ def _corrupt_transaction(tx: Tx) -> Tx:
     outputs = list(tx.outputs)
     
     if error_type == "txid":
+        print("[Corrupt] Modifying txid", flush=True)
         new_txid = bytes([random.getrandbits(8) for _ in range(32)])
         return Tx(txid=new_txid, inputs=tx.inputs, outputs=tx.outputs)
     
     elif error_type == "signature":
+        print("[Corrupt] Modifying a signature", flush=True)
         idx = random.randint(0, len(inputs) - 1)
         inputs[idx] = TxIn(inputs[idx].prev_txid, inputs[idx].prev_out_index, inputs[idx].pubK, b'\x00'*64)
         return Tx(txid=tx.txid, inputs=tuple(inputs), outputs=tx.outputs)
     
     elif error_type == "asset_id":
+        print("[Corrupt] Modifying asset_id", flush=True)
         idx = random.randint(0, len(outputs) - 1)
         bad_asset_id = 0xFFFFFFFF
         outputs[idx] = TxOut(asset_id=bad_asset_id, pubKhash=outputs[idx].pubKhash, portion=outputs[idx].portion)
         return Tx(txid=tx.txid, inputs=tx.inputs, outputs=tuple(outputs))
     
     else: # portion
+        print("[Corrupt] Modifying portion", flush=True)
         idx = random.randint(0, len(outputs) - 1)
         outputs[idx] = TxOut(asset_id=outputs[idx].asset_id, pubKhash=outputs[idx].pubKhash, portion=99999)
         return Tx(txid=tx.txid, inputs=tx.inputs, outputs=tuple(outputs))
-
-
-
-
-
-
-
-
 
 
 
