@@ -19,10 +19,11 @@ from daChain.core.validate import validate_transaction
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 FULLNODE_DIR = PROJECT_ROOT / "full-node"
 DATA_DIR = PROJECT_ROOT / "daChain" / "data"
+USERS_PATH = DATA_DIR / "user.json"
 
 
 from  daChain.core.constants import (
-    MSG_TX_NEW, MSG_TX_ACK,  MSG_BLOCK_NEW,
+    MSG_TX_NEW, MSG_TX_ACK, MSG_BLOCK_NEW, MSG_UTXO_REQ, MSG_UTXO_RESP,
     MINE_INTERVAL_SEC, MAX_TXS_PER_BLOCK, ZERO32,
 )
 
@@ -56,6 +57,9 @@ class NodeRuntime:
                 self.neighbors.append(global_nodes[target_name])
             # else:
                 # print(f"[{self.name}] Warning: Neighbor {target_name} not found in node.json")
+
+        users = json.loads(USERS_PATH.read_text(encoding="utf-8"))
+        self.pubkhash_to_owner = {info["pubKhash"]: name for name, info in users.items()}
 
         # print(f"[{self.name}] Initialized. Neighbors to broadcast: {self.neighbors}")
         self.chain_lock = asyncio.Lock()
@@ -100,6 +104,7 @@ class NodeRuntime:
                     "asset_id": int(value["asset_id"]),
                     "portion": int(value["portion"]),
                     "pubKhash": value["pubKhash"].hex(),
+                    "owner": self.pubkhash_to_owner.get(value["pubKhash"].hex(), "Unknown"),
                 }
                 for key, value in utxos.items()
             }
@@ -317,7 +322,23 @@ class NodeRuntime:
             except Exception:
                 pass
 
-
+    def _build_spendable_utxo_payload(self) -> bytes:
+        payload = {
+            "utxos": [
+                {
+                    "txid": txid_hex,
+                    "output_idx": int(out_idx_str),
+                    "asset_id": int(value["asset_id"]),
+                    "portion": int(value["portion"]),
+                    "pubKhash": value["pubKhash"].hex(),
+                    "owner": self.pubkhash_to_owner.get(value["pubKhash"].hex(), "Unknown"),
+                }
+                for key, value in self.utxos.items()
+                for txid_hex, out_idx_str in [key.rsplit(":", 1)]
+            ]
+        }
+        return json.dumps(payload).encode("utf-8")
+    
     async def handle_conn(self, reader: asyncio.StreamReader, writer: asyncio.StreamWriter):
         try:
             while True:
@@ -332,7 +353,9 @@ class NodeRuntime:
 
                 if msg_type == MSG_BLOCK_NEW:
                     await self.handle_block(payload)
-
+                if msg_type == MSG_UTXO_REQ:
+                    await self.handle_utxo_req(writer)
+                    
         except asyncio.IncompleteReadError:
             pass
         except (ConnectionResetError, OSError) as e:
@@ -354,6 +377,17 @@ class NodeRuntime:
         except Exception:
             pass
     
+    async def handle_utxo_req(self, writer: asyncio.StreamWriter):
+        async with self.chain_lock:
+            payload = self._build_spendable_utxo_payload()
+
+        try:
+            header = struct.pack(">BI", MSG_UTXO_RESP, len(payload))
+            writer.write(header + payload)
+            await writer.drain()
+        except Exception:
+            pass
+
     async def handle_tx(self, tx_bytes: bytes, writer: asyncio.StreamWriter):
         if len(tx_bytes) < 32:
             await self._send_ack(writer, b"INVALID")
