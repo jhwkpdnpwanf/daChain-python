@@ -47,11 +47,11 @@ def _verify_signatures(tx_bytes: bytes, utxo_dict: dict) -> bool:
         stack.append(target_pkh)
 
         if not _op_equalverify(stack):
-            print("Validation Error: PubKhash mismatch!")
+            # print("Validation Error: PubKhash mismatch!")
             return False
 
         if not _op_checksig(stack, message):
-            print("Validation Error: Invalid Signature!")
+            # print("Validation Error: Invalid Signature!")
             return False
         
     return True
@@ -60,7 +60,7 @@ def _verify_signatures(tx_bytes: bytes, utxo_dict: dict) -> bool:
 
 
 # 자산 지분 검증
-def _verify_balances(tx_bytes: bytes, utxo_dict: dict) -> bool:
+def _verify_balances(tx_bytes: bytes, utxo_dict: dict) -> tuple[bool, str | None]:
     tx: Tx = tx_bytes_to_Tx(tx_bytes)
 
     total_in = 0
@@ -69,14 +69,20 @@ def _verify_balances(tx_bytes: bytes, utxo_dict: dict) -> bool:
     for input in tx.inputs:
         utxo = utxo_dict[f"{input.prev_txid.hex()}:{input.prev_out_index}"]
         total_in += utxo["portion"]
-        input_asset = utxo["asset_id"]
+        if input_asset is None:
+            input_asset = utxo["asset_id"]
+        elif utxo["asset_id"] != input_asset:
+            return False, "input asset mismatch"
         
     total_out = sum(out.portion for out in tx.outputs)
     
     if any(out.asset_id != input_asset for out in tx.outputs):
-        return False
+        return False, "output asset mismatch"
 
-    return total_in == total_out
+    if total_in != total_out:
+        return False, "portion mismatch"
+
+    return True, None
 
 
 # 최종 트랜잭션 검증
@@ -86,18 +92,22 @@ def validate_transaction(tx_bytes: bytes, utxo_dict: dict) -> bool:
 
         actual_hash = sha256(tx_body_to_bytes(tx.inputs, tx.outputs))
         if tx.txid != actual_hash:
-            print("TXID 오류")
+            print("[Validation Error] Invalid txid")
             return False
 
         if not _verify_signatures(tx_bytes, utxo_dict):
-            print("서명 오류")
+            print("[Validation Error] Signature verification failed")
             return False
             
-        if not _verify_balances(tx_bytes, utxo_dict):
-            print("지분 오류")
+        balance_ok, balance_error = _verify_balances(tx_bytes, utxo_dict)
+        if not balance_ok:
+            if balance_error == "output asset mismatch" or balance_error == "input asset mismatch":
+                print("[Validation Error] Asset ID mismatch")
+            else:
+                print("[Validation Error] Portion mismatch")
             return False
-            
         return True
+    
     except Exception:
-        print("예외 발생")
+        print("[Validation Error] Exception during validation")
         return False

@@ -172,20 +172,37 @@ def _corrupt_transaction(tx: Tx) -> Tx:
         print("[Corrupt] Modifying a signature", flush=True)
         idx = random.randint(0, len(inputs) - 1)
         inputs[idx] = TxIn(inputs[idx].prev_txid, inputs[idx].prev_out_index, inputs[idx].pubK, b'\x00'*64)
-        return Tx(txid=tx.txid, inputs=tuple(inputs), outputs=tx.outputs)
+        corrupted_inputs = tuple(inputs)
+        # 오류 검증을 위해 새로운 txid 계산
+        new_txid = sha256(tx_body_to_bytes(corrupted_inputs, tx.outputs))
+        return Tx(txid=new_txid, inputs=corrupted_inputs, outputs=tx.outputs)
     
     elif error_type == "asset_id":
         print("[Corrupt] Modifying asset_id", flush=True)
         idx = random.randint(0, len(outputs) - 1)
-        bad_asset_id = 0xFFFFFFFF
+        current_asset = outputs[idx].asset_id
+        candidate_assets = {out.asset_id for out in outputs}
+        candidate_assets.update({0, 1, 2, 3, 4, 5, 10, 100, 1000})
+        candidate_assets.discard(current_asset)
+
+        if not candidate_assets:
+            bad_asset_id = current_asset + 1
+        else:
+            bad_asset_id = random.choice(tuple(candidate_assets))
         outputs[idx] = TxOut(asset_id=bad_asset_id, pubKhash=outputs[idx].pubKhash, portion=outputs[idx].portion)
-        return Tx(txid=tx.txid, inputs=tx.inputs, outputs=tuple(outputs))
+        corrupted_outputs = tuple(outputs)
+        # 오류 검증을 위해 새로운 txid 계산
+        new_txid = sha256(tx_body_to_bytes(tx.inputs, corrupted_outputs))
+        return Tx(txid=new_txid, inputs=tx.inputs, outputs=corrupted_outputs)
     
     else: # portion
         print("[Corrupt] Modifying portion", flush=True)
         idx = random.randint(0, len(outputs) - 1)
         outputs[idx] = TxOut(asset_id=outputs[idx].asset_id, pubKhash=outputs[idx].pubKhash, portion=99999)
-        return Tx(txid=tx.txid, inputs=tx.inputs, outputs=tuple(outputs))
+        corrupted_outputs = tuple(outputs)
+        # 오류 검증을 위해 새로운 txid 계산
+        new_txid = sha256(tx_body_to_bytes(tx.inputs, corrupted_outputs))
+        return Tx(txid=new_txid, inputs=tx.inputs, outputs=corrupted_outputs)
 
 
 
@@ -257,7 +274,7 @@ def _send_tx_bytes(ip: str, port: int, payload: bytes, timeout: float = 3.0) -> 
 
 
 # 사용자 프로세스 메인 루프
-def run_user_process(error_rate: float = 1, interval: float = 2.0) -> None:
+def run_user_process(error_rate: float = 0.2, interval: float = 2.0) -> None:
     node_addrs = _get_node_addrs()
 
     while True:

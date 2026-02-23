@@ -148,7 +148,7 @@ class NodeRuntime:
             return
         else:
             if not validate_transaction(tx_bytes, self.utxos):
-                print(f"[{self.name}] Invalid transaction rejected: {txid_hex[:8]}", flush=True)
+                # print(f"[{self.name}] Invalid transaction rejected: {txid_hex[:8]}", flush=True)
                 await self._send_ack(writer, b"INVALID")
                 return
             
