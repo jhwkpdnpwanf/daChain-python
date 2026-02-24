@@ -1,0 +1,76 @@
+{
+  "header": {
+    "block_height": 3,
+    "prev_hash": "000000706b5aadbe083a79c8647eb70e61d6d7dd01af450ddabcaccb3c06f158",
+    "nonce": 7977797,
+    "merkle_root": "f9858534d5e21a45f63e1e6db684b5893e365dd534163708251b473e403f6087"
+  },
+  "tx_count": 2,
+  "txs": [
+    {
+      "txid": "2769e25c2d44950013ecddc9dce487ed7844ecaf12ea34eabf23adf69050e205",
+      "input_count": 1,
+      "inputs": [
+        {
+          "prev_txid": "ae5aa7f4b9e33dd919178ecd462334748839cbc1585b7937a54c10000b237799",
+          "prev_out_index": 1,
+          "pubK": "6490821613ac5087290db259e28c0cc87a6c9b885ac4785f495b11feae2b735e5f81e6c2200618e9a95dfb4f04e9ed0a55a380791ac92c61132bb307480745e5",
+          "sig": "1dcd6398773942b802e236f24aff38bf5577f6cb12aaf4df3a9b33b89a33eccff31139fe6cb343750cb353881076037d1d11a33da53a4c49d537734abc68509d"
+        }
+      ],
+      "output_count": 2,
+      "outputs": [
+        {
+          "asset_id": 1,
+          "pubKhash": "5dd81bf2549b5f2fe1635bda0d37344d15edb41e",
+          "portion": 12
+        },
+        {
+          "asset_id": 1,
+          "pubKhash": "5dd81bf2549b5f2fe1635bda0d37344d15edb41e",
+          "portion": 5
+        }
+      ]
+    },
+    {
+      "txid": "6761989bc47ab2bfbd931596c0a5d4a9cbd0fbf1930fc47cfcaf9f9b287c7f42",
+      "input_count": 1,
+      "inputs": [
+        {
+          "prev_txid": "ca5291dd658f808e52498bfef587fab1437dbf456027078e6c5dc5ef4a49d62b",
+          "prev_out_index": 0,
+          "pubK": "e6e5b34958d4584ad3da969564cdb354d16d99efad8cbe24b39e2dbf2dfd52e2de6dbfff6d159f7a784ed2f4a3b794dc36987310f5443fcf6ada52d9600dea6c",
+          "sig": "16cce9702694581ab35e32b0bd5cc6e6051a28b1e2acf322689ff2d43f5ad136920eaae6cd925f78057701cb01cef9f5beeafa7abda09e7c467c0de48cfc02ad"
+        }
+      ],
+      "output_count": 5,
+      "outputs": [
+        {
+          "asset_id": 3,
+          "pubKhash": "71a7da57f0607aa606090b5612585ead0735cdc8",
+          "portion": 27
+        },
+        {
+          "asset_id": 3,
+          "pubKhash": "309046547faca36e4b3f9d6c01c42a37d79f48f0",
+          "portion": 22
+        },
+        {
+          "asset_id": 3,
+          "pubKhash": "71a7da57f0607aa606090b5612585ead0735cdc8",
+          "portion": 9
+        },
+        {
+          "asset_id": 3,
+          "pubKhash": "309046547faca36e4b3f9d6c01c42a37d79f48f0",
+          "portion": 36
+        },
+        {
+          "asset_id": 3,
+          "pubKhash": "7eb41eea7ae79b64f5e20064198eb5365f715f44",
+          "portion": 6
+        }
+      ]
+    }
+  ]
+}
