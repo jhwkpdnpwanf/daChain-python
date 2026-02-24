@@ -206,11 +206,11 @@ daChain에서 사용하는 주소 변환 바이트 구성
 
 | 코드     | 의미                 | 설명                                                                  |
 | ------ | ------------------ | ------------------------------------------------------------------- |
-| `0x01` | `MSG_TX_NEW`       | 사용자 또는 노드가 새로운 트랜잭션을 전송할 때 사용하는 메시지. payload에는 직렬화된 트랜잭션 바이트가 포함됨.  |
-| `0x02` | `MSG_TX_ACK`       | `MSG_TX_NEW` 수신에 대한 응답 메시지. 트랜잭션 수락/거절 결과 또는 상태 정보 반환에 사용됨.         |
-| `0x03` | `MSG_BLOCK_NEW`    | 채굴된 새로운 블록을 다른 노드에 전파할 때 사용하는 메시지. payload에는 직렬화된 블록 데이터 포함.        |
-| `0x04` | `MSG_UTXO_REQ`     | 특정 노드에 현재 사용 가능한 UTXO 목록을 요청하는 메시지. user_process가 트랜잭션 생성을 위해 호출.   |
-| `0x05` | `MSG_UTXO_RESP`    | `MSG_UTXO_REQ`에 대한 응답 메시지. 현재 노드가 보유한 spendable UTXO 목록(JSON 등) 반환. |
-| `0x06` | `MSG_MASTER_MINED` | Full Node가 블록 채굴 성공 시 Master Process에 보고하는 메시지. 채굴 이벤트 알림용.         |
-| `0x07` | `MSG_MASTER_REQ`   | Master Process가 특정 노드에 상태/데이터 조회를 요청할 때 사용하는 메시지.                   |
-| `0x08` | `MSG_MASTER_RESP`  | `MSG_MASTER_REQ`에 대한 응답 메시지. 노드가 요청된 데이터(체인 상태, 트랜잭션 정보 등)를 반환.     |
+| `0x01` | `MSG_TX_NEW`       | 사용자 또는 노드가 새로운 트랜잭션을 전송할 때 사용하는 메시지입니다. payload에는 직렬화된 트랜잭션이 있습니다.  |
+| `0x02` | `MSG_TX_ACK`       | `MSG_TX_NEW` 수신에 대한 응답 메시지. 트랜잭션 수락/거절 결과 또는 상태 정보 반환에 사용됩니다.         |
+| `0x03` | `MSG_BLOCK_NEW`    | 채굴된 새로운 블록을 다른 노드에 전파할 때 사용하는 메시지입니다. payload에는 직렬화된 블록 데이터가 포함됩니다.        |
+| `0x04` | `MSG_UTXO_REQ`     | 특정 노드에 현재 사용 가능한 UTXO 목록을 요청하는 메시지입니다. user_process가 트랜잭션 생성을 위해 호출합니다.   |
+| `0x05` | `MSG_UTXO_RESP`    | `MSG_UTXO_REQ`에 대한 응답 메시지입니다. 현재 노드가 보유한 spendable UTXO 목록을 반환합니다. |
+| `0x06` | `MSG_MASTER_MINED` | Full Node가 블록 채굴 성공 시 Master Process에 보고하는 메시지입니다. (채굴 이벤트 알림용)       |
+| `0x07` | `MSG_MASTER_REQ`   | Master Process가 특정 노드에 상태/데이터 조회를 요청할 때 사용하는 메시지입니다.                  |
+| `0x08` | `MSG_MASTER_RESP`  | `MSG_MASTER_REQ`에 대한 응답 메시지입니다. 노드가 요청된 데이터를 반환합니다.     |
